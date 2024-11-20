@@ -55,10 +55,10 @@ async def async_main():
         logging.error("Database connection failed. Exiting...")
         return
     
-    # Define proxy lists to handle requests
-    proxy_list_1 = ['http://170.106.183.248:8080', 'http://168.234.75.168:80']
-    proxy_list_2 = [ 'http://222.252.194.204:8080', 'http://43.133.59.220:3128', 'http://44.227.181.1:80']
-    proxy_list_3 = [ 'http://31.41.216.122:3128', 'http://35.176.148.8:3128','http://52.35.240.119:3128' ]
+    # Define proxy lists to handle requests, fill them
+    proxy_list_1 = []
+    proxy_list_2 = []
+    proxy_list_3 = []
     proxy_lists = [proxy_list_1, proxy_list_2, proxy_list_3]
     
     try:

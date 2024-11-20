@@ -27,7 +27,7 @@ def validate_proxies(proxy_list, endpoint_url):
         'Content-Type': 'application/json'
     }
 
-    valid_proxies = []  # List to store valid proxies
+    valid_proxies = []  # List to store valid proxies, fill the list
     remaining_proxies = len(proxy_list)  # Counter for remaining proxies
     print(f"Total proxies to validate: {remaining_proxies}")
 
