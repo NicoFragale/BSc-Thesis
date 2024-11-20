@@ -1,7 +1,7 @@
 # Bachelor's Thesis in Computer Science
 🎓My BSc Degree Thesis in Computer Science at Sapienza Università di Roma, entitled **"From Scraping to Bot Detection: Navigating Mastodon and the Fediverse with APIs."**
 
-[Download the thesis](thesis.pdf)
+[Download the thesis](BSc-Thesis/thesis.pdf)
 
 # Abstract
 
