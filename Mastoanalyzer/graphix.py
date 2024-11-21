@@ -247,63 +247,7 @@ def tempo_di_risposta(array):
 
 # Function to plot user statistics (followers, following, statuses) for both real users and bots
 def plot_user_stats(db_connection):
-    """
-    This function generates a series of plots comparing followers, following, and statuses for both real users and bots.
-    The data is retrieved from the provided database connection.
-    """
-    # Retrieve all users from the database
-    all_users = get_user(db_connection)
-    
-    # If the database is empty, exit the function
-    if not all_users:
-        print("No data available")
-        return
-    
-    # Lists to store statistics for real users and bots
-    followersUser, followersBot = [], []
-    followingUser, followingBot = [], []
-    statusesUser, statusesBot = [], []
-    usernameUser, usernameBot = [], []  # Add more lists if needed
-    
-    # Loop through all users and categorize by whether they are real users or bots
-    for user in all_users:
-        if user['bot'] == 0:  # Real user
-            followersUser.append(user['followers'])
-            followingUser.append(user['following'])
-            statusesUser.append(user['statuses'])
-            usernameUser.append(len(user['username']))
-        elif user['bot'] == 1:  # Bot
-            followersBot.append(user['followers'])
-            followingBot.append(user['following'])
-            statusesBot.append(user['statuses'])
-            usernameBot.append(len(user['username']))
-
-    # Create subplots for displaying comparisons of followers, following, and statuses
-    fig, axes = plt.subplots(3, 1, figsize=(10, 18))  # 3 rows, 1 column for 3 plots
-
-    user_color = '#1f77b4'  # Blue for real users
-    bot_color = '#d2b48c'   # Sand color for bots
-
-    # Plot Followers comparison
-    plot_metric_comparison(followersUser, followersBot, "Followers", axes[0], user_color, bot_color, "Followers", 
-                           median(followersUser), median(followersBot), mean(followersUser), mean(followersBot))
-    
-    # Plot Following comparison
-    plot_metric_comparison(followingUser, followingBot, "Following", axes[1], user_color, bot_color, "Following", 
-                           median(followingUser), median(followingBot), mean(followingUser), mean(followingBot))
-    
-    # Plot Statuses comparison
-    plot_metric_comparison(statusesUser, statusesBot, "Statuses", axes[2], user_color, bot_color, "Statuses", 
-                           median(statusesUser), median(statusesBot), mean(statusesUser), mean(statusesBot))
-
-    # Adjust layout and display the plot
-    plt.xticks(fontsize=12)  
-    plt.yticks(fontsize=12) 
-    plt.tight_layout()
-    plt.show()
-    print("Done")
-
-    # all the users
+    #prendo gli utenti
     real_users = get_all_user(db_connection)
     user_color = '#4C72B0'
 
@@ -312,7 +256,7 @@ def plot_user_stats(db_connection):
     following = [user['following'] for user in real_users]
     statuses = [user['statuses'] for user in real_users]
 
-    #mean e median for all 3 graphs
+    #media e mediana per tutti e 3 i grafici
     ers_mean = np.mean(followers)
     ers_median = np.median(followers)
 
@@ -322,17 +266,17 @@ def plot_user_stats(db_connection):
     ses_mean = np.mean(statuses)
     ses_median = np.median(statuses)
     
-    # Histogramm of followers
-    plt.figure(figsize=(14, 8))  # graphs dimension
-    plt.stem(range(len(num_users)),followers, linefmt='b-', markerfmt=' ', basefmt=" ")
+    # Crea un istogramma dei followers
+    plt.figure(figsize=(14, 8))  # dimensione del grafico
+    plt.stem(range(len(num_users)), statuses, linefmt='b-', markerfmt=' ', basefmt=" ")
 
-    plt.title("Number of Followers for each User", fontsize=18)
+    plt.title("Number of Statuses for each User", fontsize=18)
     plt.xlabel("Users", fontsize = 14)
-    plt.ylabel("Number of Followers", fontsize = 14)
+    plt.ylabel("Number of Statuses", fontsize = 14)
     
-    # Add mean and median
-    plt.axhline(ers_mean, color='red', linestyle='--', linewidth=2.5, label=f'Average Followers: {ers_mean:.2f}')
-    plt.axhline(ers_median, color='green', linestyle='-', linewidth=2.5, label=f'Median Followers: {ers_median:.2f}')
+    # Aggiungi le linee per media e mediana
+    plt.axhline(ses_mean, color='red', linestyle='--', linewidth=1.5, label=f'Average Followers: {ses_mean:.2f}')
+    plt.axhline(ses_median, color='green', linestyle='-', linewidth=1.5, label=f'Median Followers: {ses_median:.2f}')
 
     plt.legend(fontsize=14)  
     plt.xticks(fontsize=12)  
