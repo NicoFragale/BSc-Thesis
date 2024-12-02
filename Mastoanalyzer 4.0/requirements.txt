@@ -1,0 +1,7 @@
+requests
+mysql-connector-python
+httpx
+beautifulsoup4
+matplotlib
+seaborn
+numpy
