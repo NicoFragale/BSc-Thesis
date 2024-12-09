@@ -1,0 +1,9 @@
+access_token = '-2WBrNCiwKMfhPfBWCxvOiinVw_DFbGZ2h66D4uzLr0'
+endpoint_url = "https://mastodon.social/api/v1/accounts/verify_credentials"
+client_key = 'OyrthPjS-tMwbMmcBYqXwqcntiRdEJ3TC1CVNX8O4IM'
+client_secret = 'Sc8jWvNQqFPYVykvwolkZozSxwMCAthKwwQCqIuSNU4'
+instance_url = "https://mastodon.social"
+host = '127.0.0.1'
+user = 'root'
+password = 'S01me!20'
+database = 'mastodon'
